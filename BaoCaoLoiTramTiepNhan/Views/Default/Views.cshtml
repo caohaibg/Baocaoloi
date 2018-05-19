@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "BÁO CÁO LỖI TRẠM TIẾP NHẬN";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title" id="plTitle_LoiTram"></h3>
+    </div>
+    <div class="panel-body">
+        <div id="body_dau">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <span class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px; padding-right:5px; text-align:right;">LỖI:</span>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <input id="cbbLoi_BaoCaoLoiTram" class="input-group" style="width:100%; max-width:100000px;" />
+                    </div>
+                    <span class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0px; padding-right:5px; text-align:right;">TỪ:</span>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <input id="cbbNgay_BaoCaoLoiTram" class="input-group" style="width:100%; max-width:100000px;">
+                    </div>
+                    <span class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0px; padding-right:5px; text-align:right;">ĐẾN:</span>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <input id="cbbNgay_BaoCaoLoiTram2" class="input-group" style="width:100%; max-width:100000px;">
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-11 col-xs-10">
+                        <button class="btn btn-primary input-group" id="btnXem" style="width:100%;">XEM</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px;">
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <span class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px; padding-right:5px; text-align:right;">BIỂN SỐ XE:</span>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <input id="cbbBSXe_BaoCaoLoiTram" class="input-group" style="width:100%; max-width:100000px;">
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-bottom: 10px; margin-top: 10px;" />
+           
+        </div>
+    </div>
+    <div id="grid_BaoCaoLoi" style="height: 500px;"></div>
+</div>
+@section scripts{
+
+    <script>var gridName = "grid_BaoCaoLoi"</script>
+
+    <!--Loại Báo Cáo-->
+    <script src="~/Scripts/TableContent.js"></script>
+    <script>
+        var datatest = @Html.Raw(Json.Encode(ViewBag.AllData_BCL));
+        datatest = JSON.parse(datatest);
+        BaoCaoLoiTram("grid_BaoCaoLoi", datatest);
+        removeitemperpage();
+    </script>
+
+    <!--Set select datetime-->
+    <script>
+        $("#cbbNgay_BaoCaoLoiTram").kendoDatePicker({
+            dateInput: true,
+            format: "dd/MM/yyyy",
+            culture: "vi-VN",
+            value: kendo.parseDate(new Date()),
+        });
+        $("#cbbNgay_BaoCaoLoiTram2").kendoDatePicker({
+            dateInput: true,
+            format: "dd/MM/yyyy",
+            culture: "vi-VN",
+            value: kendo.parseDate(new Date()),
+        });
+        var today = kendo.parseDate(new Date(dataBien_Ben.Nam, dataBien_Ben.Thang - 1, dataBien_Ben.Ngay), 'dd/MM/yyyy');
+        var today1 = kendo.parseDate(new Date(dataBien_Ben.Nam1, dataBien_Ben.Thang1 - 1, dataBien_Ben.Ngay1), 'dd/MM/yyyy');
+        var datepicker_ThangNam = $("#cbbNgay_BaoCaoLoiTram").data('kendoDatePicker');
+        var datepicker1_ThangNam = $("#cbbNgay_BaoCaoLoiTram2").data('kendoDatePicker');
+        datepicker_ThangNam.value(today);
+        datepicker1_ThangNam.value(today1);
+    </script>
+    
+    <!--Set click change-->
+    <script>
+        
+        $('#btnXem').on('click',
+            function () {
+                var data =@Html.Raw(Json.Encode(ViewBag.All));
+                var datanew = JSON.parse(data);
+                var ngaybatdau = kendo.toString($("#cbbNgay_BaoCaoLoiTram").data('kendoDatePicker').value(), 'MM/dd/yyyy');
+                var ngayketthuc = kendo.toString($("#cbbNgay_BaoCaoLoiTram2").data('kendoDatePicker').value(), 'MM/dd/yyyy');
+                for (var i = 0; i < datanew.length; i++) {
+                    var obj = datanew[i];
+                    for (var key in obj) {
+                        var attrValue = obj[key];
+                    }
+                }
+            });
+        
+    </script>
+
+    @*<script>
+            function automed(inp, arr) {
+                var currentFocus;
+
+                inp.addEventListener("input", function (e) {
+                    var a, b, i, val = this.value;
+                    closeAllLists();
+                    if (!val) { return false; }
+                    currentFocus = -1;
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "col-lg-9 col-md-9 col-sm-9 col-xs-9-list");
+                    a.setAttribute("class", "col-lg-9 col-md-9 col-sm-9 col-xs-9-items");
+                    this.parentNode.appendChild(a);
+
+                    for (i = 0; i < arr.length; i++) {
+                        /*check if the item starts with the same letters as the text field value:*/
+                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+
+                            b = document.createElement("DIV");
+                            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                            b.innerHTML += arr[i].substr(val.length);
+                            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                            b.addEventListener("click", function (e) {
+                                inp.value = this.getElementsByTagName("input")[0].value;
+                                closeAllLists();
+                            });
+                            a.appendChild(b);
+                        }
+                    }
+                });
+                /*execute a function presses a key on the keyboard:*/
+                inp.addEventListener("keydown", function (e) {
+                    var x = document.getElementById(this.id + "col-lg-9 col-md-9 col-sm-9 col-xs-9-list");
+                    if (x) x = x.getElementsByTagName("div");
+                    if (e.keyCode == 40) {
+                        currentFocus++;
+                        addActive(x);
+                    } else if (e.keyCode == 38) { //up
+                        currentFocus--;
+                        addActive(x);
+                    } else if (e.keyCode == 13) {
+                        e.preventDefault();
+                        if (currentFocus > -1) {
+                            if (x) x[currentFocus].click();
+                        }
+                    }
+                });
+                function addActive(x) {
+                    if (!x) return false;
+                    /*start by removing the "active" class on all items:*/
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    /*add class "col-lg-9 col-md-9 col-sm-9 col-xs-9-active":*/
+                    x[currentFocus].classList.add("col-lg-9 col-md-9 col-sm-9 col-xs-9-active");
+                }
+                function removeActive(x) {
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].classList.remove("col-lg-9 col-md-9 col-sm-9 col-xs-9-active");
+                    }
+                }
+                function closeAllLists(elmnt) {
+                    var x = document.getElementsByClassName("col-lg-9 col-md-9 col-sm-9 col-xs-9-items");
+                    for (var i = 0; i < x.length; i++) {
+                        if (elmnt != x[i] && elmnt != inp) {
+                            x[i].parentNode.removeChild(x[i]);
+                        }
+                    }
+                }
+
+            }
+
+            var maloi=@Html.Raw(Json.Encode(ViewBag.maloi));
+            var loi=@Html.Raw(Json.Encode(ViewBag.loi));
+            var bsxe=@Html.Raw(Json.Encode(ViewBag.bsxe));
+            automed(document.getElementById("cbbMa_BaoCaoLoiTram"), maloi);
+            automed(document.getElementById("cbbLoi_BaoCaoLoiTram"), loi);
+            automed(document.getElementById("cbbBSXe_BaoCaoLoiTram"), bsxe);
+
+        </script>*@
+}

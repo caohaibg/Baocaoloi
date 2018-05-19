@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLVanTai_TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="NhatTrinhXe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TX_IdXe" Type="bigint" />
+    <Property Name="LT_IdLuongTuyen" Type="bigint" />
+    <Property Name="CT_IdCongTyVT" Type="int" />
+    <Property Name="IdBenDi" Type="int" />
+    <Property Name="BienSoDi" Type="varchar" MaxLength="16" />
+    <Property Name="GioVaoBen" Type="datetime" />
+    <Property Name="GioXuatBenKeHoach" Type="datetime" />
+    <Property Name="GioCapXuatBen" Type="datetime" />
+    <Property Name="GioRaBen" Type="datetime" />
+    <Property Name="SoKhach" Type="int" />
+    <Property Name="XeXepKhach" Type="bit" />
+    <Property Name="XeKhongDuDieuKien" Type="bit" />
+    <Property Name="XeVeDonVi" Type="bit" />
+    <Property Name="XeTangCuong" Type="bit" />
+    <Property Name="IdBenDen" Type="int" />
+    <Property Name="GioDenBen" Type="datetime" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+    <Property Name="GioTaoMoi" Type="datetime" />
+    <Property Name="GioCapNhat" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Transfer_NhatKyTruyenTaiDuLieu">
+    <Key>
+      <PropertyRef Name="IDNhatKyTruyenTaiDuLieu" />
+    </Key>
+    <Property Name="IDNhatKyTruyenTaiDuLieu" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDApplicationSession" Type="bigint" Nullable="false" />
+    <Property Name="Loai" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DuLieu" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MaLoi" Type="bigint" Nullable="false" />
+    <Property Name="Loi" Type="nvarchar(max)" />
+    <Property Name="ChanDoan" Type="nvarchar(max)" />
+    <Property Name="RawError" Type="nvarchar(max)" />
+    <Property Name="RawRequest" Type="nvarchar(max)" />
+    <Property Name="ThongTinThem" Type="nvarchar(max)" />
+    <Property Name="IDNhatTrinhXe" Type="bigint" />
+    <Property Name="NgayGhi" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+    <End Role="NhatTrinhXe" Type="Self.NhatTrinhXe" Multiplicity="0..1" />
+    <End Role="Transfer_NhatKyTruyenTaiDuLieu" Type="Self.Transfer_NhatKyTruyenTaiDuLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhatTrinhXe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transfer_NhatKyTruyenTaiDuLieu">
+        <PropertyRef Name="IDNhatTrinhXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLVanTai_TESTModelStoreContainer">
+    <EntitySet Name="NhatTrinhXe" EntityType="Self.NhatTrinhXe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transfer_NhatKyTruyenTaiDuLieu" EntityType="Self.Transfer_NhatKyTruyenTaiDuLieu" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" Association="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+      <End Role="NhatTrinhXe" EntitySet="NhatTrinhXe" />
+      <End Role="Transfer_NhatKyTruyenTaiDuLieu" EntitySet="Transfer_NhatKyTruyenTaiDuLieu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

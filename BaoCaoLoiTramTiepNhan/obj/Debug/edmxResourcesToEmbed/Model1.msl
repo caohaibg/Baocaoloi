@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLVanTai_TESTModelStoreContainer" CdmEntityContainer="QLVanTai_TESTEntities">
+    <EntitySetMapping Name="NhatTrinhXes">
+      <EntityTypeMapping TypeName="QLVanTai_TESTModel.NhatTrinhXe">
+        <MappingFragment StoreEntitySet="NhatTrinhXe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TX_IdXe" ColumnName="TX_IdXe" />
+          <ScalarProperty Name="LT_IdLuongTuyen" ColumnName="LT_IdLuongTuyen" />
+          <ScalarProperty Name="CT_IdCongTyVT" ColumnName="CT_IdCongTyVT" />
+          <ScalarProperty Name="IdBenDi" ColumnName="IdBenDi" />
+          <ScalarProperty Name="BienSoDi" ColumnName="BienSoDi" />
+          <ScalarProperty Name="GioVaoBen" ColumnName="GioVaoBen" />
+          <ScalarProperty Name="GioXuatBenKeHoach" ColumnName="GioXuatBenKeHoach" />
+          <ScalarProperty Name="GioCapXuatBen" ColumnName="GioCapXuatBen" />
+          <ScalarProperty Name="GioRaBen" ColumnName="GioRaBen" />
+          <ScalarProperty Name="SoKhach" ColumnName="SoKhach" />
+          <ScalarProperty Name="XeXepKhach" ColumnName="XeXepKhach" />
+          <ScalarProperty Name="XeKhongDuDieuKien" ColumnName="XeKhongDuDieuKien" />
+          <ScalarProperty Name="XeVeDonVi" ColumnName="XeVeDonVi" />
+          <ScalarProperty Name="XeTangCuong" ColumnName="XeTangCuong" />
+          <ScalarProperty Name="IdBenDen" ColumnName="IdBenDen" />
+          <ScalarProperty Name="GioDenBen" ColumnName="GioDenBen" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="GioTaoMoi" ColumnName="GioTaoMoi" />
+          <ScalarProperty Name="GioCapNhat" ColumnName="GioCapNhat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transfer_NhatKyTruyenTaiDuLieu">
+      <EntityTypeMapping TypeName="QLVanTai_TESTModel.Transfer_NhatKyTruyenTaiDuLieu">
+        <MappingFragment StoreEntitySet="Transfer_NhatKyTruyenTaiDuLieu">
+          <ScalarProperty Name="NgayGhi" ColumnName="NgayGhi" />
+          <ScalarProperty Name="IDNhatKyTruyenTaiDuLieu" ColumnName="IDNhatKyTruyenTaiDuLieu" />
+          <ScalarProperty Name="IDApplicationSession" ColumnName="IDApplicationSession" />
+          <ScalarProperty Name="Loai" ColumnName="Loai" />
+          <ScalarProperty Name="DuLieu" ColumnName="DuLieu" />
+          <ScalarProperty Name="MaLoi" ColumnName="MaLoi" />
+          <ScalarProperty Name="Loi" ColumnName="Loi" />
+          <ScalarProperty Name="ChanDoan" ColumnName="ChanDoan" />
+          <ScalarProperty Name="RawError" ColumnName="RawError" />
+          <ScalarProperty Name="RawRequest" ColumnName="RawRequest" />
+          <ScalarProperty Name="ThongTinThem" ColumnName="ThongTinThem" />
+          <ScalarProperty Name="IDNhatTrinhXe" ColumnName="IDNhatTrinhXe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

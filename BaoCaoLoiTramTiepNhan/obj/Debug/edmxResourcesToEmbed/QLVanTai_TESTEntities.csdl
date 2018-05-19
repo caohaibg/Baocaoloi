@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLVanTai_TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="NhatTrinhXe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TX_IdXe" Type="Int64" />
+    <Property Name="LT_IdLuongTuyen" Type="Int64" />
+    <Property Name="CT_IdCongTyVT" Type="Int32" />
+    <Property Name="IdBenDi" Type="Int32" />
+    <Property Name="BienSoDi" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="GioVaoBen" Type="DateTime" Precision="3" />
+    <Property Name="GioXuatBenKeHoach" Type="DateTime" Precision="3" />
+    <Property Name="GioCapXuatBen" Type="DateTime" Precision="3" />
+    <Property Name="GioRaBen" Type="DateTime" Precision="3" />
+    <Property Name="SoKhach" Type="Int32" />
+    <Property Name="XeXepKhach" Type="Boolean" />
+    <Property Name="XeKhongDuDieuKien" Type="Boolean" />
+    <Property Name="XeVeDonVi" Type="Boolean" />
+    <Property Name="XeTangCuong" Type="Boolean" />
+    <Property Name="IdBenDen" Type="Int32" />
+    <Property Name="GioDenBen" Type="DateTime" Precision="3" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GioTaoMoi" Type="DateTime" Precision="3" />
+    <Property Name="GioCapNhat" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Transfer_NhatKyTruyenTaiDuLieu" Relationship="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" FromRole="NhatTrinhXe" ToRole="Transfer_NhatKyTruyenTaiDuLieu" />
+  </EntityType>
+  <EntityType Name="Transfer_NhatKyTruyenTaiDuLieu">
+    <Key>
+      <PropertyRef Name="IDNhatKyTruyenTaiDuLieu" />
+    </Key>
+    <Property Name="IDNhatKyTruyenTaiDuLieu" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDApplicationSession" Type="Int64" Nullable="false" />
+    <Property Name="Loai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DuLieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaLoi" Type="Int64" Nullable="false" />
+    <Property Name="Loi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChanDoan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RawError" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RawRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThongTinThem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IDNhatTrinhXe" Type="Int64" />
+    <Property Name="NgayGhi" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="NhatTrinhXe" Relationship="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" FromRole="Transfer_NhatKyTruyenTaiDuLieu" ToRole="NhatTrinhXe" />
+  </EntityType>
+  <Association Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+    <End Role="NhatTrinhXe" Type="Self.NhatTrinhXe" Multiplicity="0..1" />
+    <End Role="Transfer_NhatKyTruyenTaiDuLieu" Type="Self.Transfer_NhatKyTruyenTaiDuLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhatTrinhXe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transfer_NhatKyTruyenTaiDuLieu">
+        <PropertyRef Name="IDNhatTrinhXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLVanTai_TESTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NhatTrinhXes" EntityType="Self.NhatTrinhXe" />
+    <EntitySet Name="Transfer_NhatKyTruyenTaiDuLieu" EntityType="Self.Transfer_NhatKyTruyenTaiDuLieu" />
+    <AssociationSet Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" Association="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+      <End Role="NhatTrinhXe" EntitySet="NhatTrinhXes" />
+      <End Role="Transfer_NhatKyTruyenTaiDuLieu" EntitySet="Transfer_NhatKyTruyenTaiDuLieu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

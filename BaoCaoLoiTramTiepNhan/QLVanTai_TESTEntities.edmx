@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLVanTai_TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NhatTrinhXe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TX_IdXe" Type="bigint" />
+          <Property Name="LT_IdLuongTuyen" Type="bigint" />
+          <Property Name="CT_IdCongTyVT" Type="int" />
+          <Property Name="IdBenDi" Type="int" />
+          <Property Name="BienSoDi" Type="varchar" MaxLength="16" />
+          <Property Name="GioVaoBen" Type="datetime" />
+          <Property Name="GioXuatBenKeHoach" Type="datetime" />
+          <Property Name="GioCapXuatBen" Type="datetime" />
+          <Property Name="GioRaBen" Type="datetime" />
+          <Property Name="SoKhach" Type="int" />
+          <Property Name="XeXepKhach" Type="bit" />
+          <Property Name="XeKhongDuDieuKien" Type="bit" />
+          <Property Name="XeVeDonVi" Type="bit" />
+          <Property Name="XeTangCuong" Type="bit" />
+          <Property Name="IdBenDen" Type="int" />
+          <Property Name="GioDenBen" Type="datetime" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+          <Property Name="GioTaoMoi" Type="datetime" />
+          <Property Name="GioCapNhat" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Transfer_NhatKyTruyenTaiDuLieu">
+          <Key>
+            <PropertyRef Name="IDNhatKyTruyenTaiDuLieu" />
+          </Key>
+          <Property Name="IDNhatKyTruyenTaiDuLieu" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDApplicationSession" Type="bigint" Nullable="false" />
+          <Property Name="Loai" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DuLieu" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MaLoi" Type="bigint" Nullable="false" />
+          <Property Name="Loi" Type="nvarchar(max)" />
+          <Property Name="ChanDoan" Type="nvarchar(max)" />
+          <Property Name="RawError" Type="nvarchar(max)" />
+          <Property Name="RawRequest" Type="nvarchar(max)" />
+          <Property Name="ThongTinThem" Type="nvarchar(max)" />
+          <Property Name="IDNhatTrinhXe" Type="bigint" />
+          <Property Name="NgayGhi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+          <End Role="NhatTrinhXe" Type="Self.NhatTrinhXe" Multiplicity="0..1" />
+          <End Role="Transfer_NhatKyTruyenTaiDuLieu" Type="Self.Transfer_NhatKyTruyenTaiDuLieu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhatTrinhXe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_NhatKyTruyenTaiDuLieu">
+              <PropertyRef Name="IDNhatTrinhXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLVanTai_TESTModelStoreContainer">
+          <EntitySet Name="NhatTrinhXe" EntityType="Self.NhatTrinhXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transfer_NhatKyTruyenTaiDuLieu" EntityType="Self.Transfer_NhatKyTruyenTaiDuLieu" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" Association="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+            <End Role="NhatTrinhXe" EntitySet="NhatTrinhXe" />
+            <End Role="Transfer_NhatKyTruyenTaiDuLieu" EntitySet="Transfer_NhatKyTruyenTaiDuLieu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLVanTai_TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="NhatTrinhXe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TX_IdXe" Type="Int64" />
+          <Property Name="LT_IdLuongTuyen" Type="Int64" />
+          <Property Name="CT_IdCongTyVT" Type="Int32" />
+          <Property Name="IdBenDi" Type="Int32" />
+          <Property Name="BienSoDi" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="GioVaoBen" Type="DateTime" Precision="3" />
+          <Property Name="GioXuatBenKeHoach" Type="DateTime" Precision="3" />
+          <Property Name="GioCapXuatBen" Type="DateTime" Precision="3" />
+          <Property Name="GioRaBen" Type="DateTime" Precision="3" />
+          <Property Name="SoKhach" Type="Int32" />
+          <Property Name="XeXepKhach" Type="Boolean" />
+          <Property Name="XeKhongDuDieuKien" Type="Boolean" />
+          <Property Name="XeVeDonVi" Type="Boolean" />
+          <Property Name="XeTangCuong" Type="Boolean" />
+          <Property Name="IdBenDen" Type="Int32" />
+          <Property Name="GioDenBen" Type="DateTime" Precision="3" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GioTaoMoi" Type="DateTime" Precision="3" />
+          <Property Name="GioCapNhat" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Transfer_NhatKyTruyenTaiDuLieu" Relationship="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" FromRole="NhatTrinhXe" ToRole="Transfer_NhatKyTruyenTaiDuLieu" />
+        </EntityType>
+        <EntityType Name="Transfer_NhatKyTruyenTaiDuLieu">
+          <Key>
+            <PropertyRef Name="IDNhatKyTruyenTaiDuLieu" />
+          </Key>
+          <Property Name="IDNhatKyTruyenTaiDuLieu" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDApplicationSession" Type="Int64" Nullable="false" />
+          <Property Name="Loai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DuLieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaLoi" Type="Int64" Nullable="false" />
+          <Property Name="Loi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChanDoan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RawError" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RawRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThongTinThem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDNhatTrinhXe" Type="Int64" />
+          <Property Name="NgayGhi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="NhatTrinhXe" Relationship="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" FromRole="Transfer_NhatKyTruyenTaiDuLieu" ToRole="NhatTrinhXe" />
+        </EntityType>
+        <Association Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+          <End Role="NhatTrinhXe" Type="Self.NhatTrinhXe" Multiplicity="0..1" />
+          <End Role="Transfer_NhatKyTruyenTaiDuLieu" Type="Self.Transfer_NhatKyTruyenTaiDuLieu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhatTrinhXe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transfer_NhatKyTruyenTaiDuLieu">
+              <PropertyRef Name="IDNhatTrinhXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLVanTai_TESTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NhatTrinhXes" EntityType="Self.NhatTrinhXe" />
+          <EntitySet Name="Transfer_NhatKyTruyenTaiDuLieu" EntityType="Self.Transfer_NhatKyTruyenTaiDuLieu" />
+          <AssociationSet Name="fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu" Association="Self.fk_NhatTrinhXe_NhatKyTruyenTaiDuLieu">
+            <End Role="NhatTrinhXe" EntitySet="NhatTrinhXes" />
+            <End Role="Transfer_NhatKyTruyenTaiDuLieu" EntitySet="Transfer_NhatKyTruyenTaiDuLieu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLVanTai_TESTModelStoreContainer" CdmEntityContainer="QLVanTai_TESTEntities">
+          <EntitySetMapping Name="NhatTrinhXes">
+            <EntityTypeMapping TypeName="QLVanTai_TESTModel.NhatTrinhXe">
+              <MappingFragment StoreEntitySet="NhatTrinhXe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TX_IdXe" ColumnName="TX_IdXe" />
+                <ScalarProperty Name="LT_IdLuongTuyen" ColumnName="LT_IdLuongTuyen" />
+                <ScalarProperty Name="CT_IdCongTyVT" ColumnName="CT_IdCongTyVT" />
+                <ScalarProperty Name="IdBenDi" ColumnName="IdBenDi" />
+                <ScalarProperty Name="BienSoDi" ColumnName="BienSoDi" />
+                <ScalarProperty Name="GioVaoBen" ColumnName="GioVaoBen" />
+                <ScalarProperty Name="GioXuatBenKeHoach" ColumnName="GioXuatBenKeHoach" />
+                <ScalarProperty Name="GioCapXuatBen" ColumnName="GioCapXuatBen" />
+                <ScalarProperty Name="GioRaBen" ColumnName="GioRaBen" />
+                <ScalarProperty Name="SoKhach" ColumnName="SoKhach" />
+                <ScalarProperty Name="XeXepKhach" ColumnName="XeXepKhach" />
+                <ScalarProperty Name="XeKhongDuDieuKien" ColumnName="XeKhongDuDieuKien" />
+                <ScalarProperty Name="XeVeDonVi" ColumnName="XeVeDonVi" />
+                <ScalarProperty Name="XeTangCuong" ColumnName="XeTangCuong" />
+                <ScalarProperty Name="IdBenDen" ColumnName="IdBenDen" />
+                <ScalarProperty Name="GioDenBen" ColumnName="GioDenBen" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="GioTaoMoi" ColumnName="GioTaoMoi" />
+                <ScalarProperty Name="GioCapNhat" ColumnName="GioCapNhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transfer_NhatKyTruyenTaiDuLieu">
+            <EntityTypeMapping TypeName="QLVanTai_TESTModel.Transfer_NhatKyTruyenTaiDuLieu">
+              <MappingFragment StoreEntitySet="Transfer_NhatKyTruyenTaiDuLieu">
+                <ScalarProperty Name="IDNhatKyTruyenTaiDuLieu" ColumnName="IDNhatKyTruyenTaiDuLieu" />
+                <ScalarProperty Name="IDApplicationSession" ColumnName="IDApplicationSession" />
+                <ScalarProperty Name="Loai" ColumnName="Loai" />
+                <ScalarProperty Name="DuLieu" ColumnName="DuLieu" />
+                <ScalarProperty Name="MaLoi" ColumnName="MaLoi" />
+                <ScalarProperty Name="Loi" ColumnName="Loi" />
+                <ScalarProperty Name="ChanDoan" ColumnName="ChanDoan" />
+                <ScalarProperty Name="RawError" ColumnName="RawError" />
+                <ScalarProperty Name="RawRequest" ColumnName="RawRequest" />
+                <ScalarProperty Name="ThongTinThem" ColumnName="ThongTinThem" />
+                <ScalarProperty Name="IDNhatTrinhXe" ColumnName="IDNhatTrinhXe" />
+                <ScalarProperty Name="NgayGhi" ColumnName="NgayGhi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

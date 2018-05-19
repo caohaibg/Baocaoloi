@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "ok";
+    Layout = "~/Views/Default/View.cshtml";
+}
+<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title" id="plTitle_LoiTram"></h3>
+    </div>
+    <div class="panel-body">
+        <div id="body_dau">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="row" style="margin-top: 5px;">
+                            <span class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-left: 0px; padding-right: 5px; text-align: right;">MÃ LỖI:</span>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                <input id="cbbMa_BaoCaoLoiTram" class="input-group" style="max-width: 100000px; width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;">
+                            <span class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-left: 0px; padding-right: 5px; text-align: right;">GIỜ:</span>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                <input id="cbbGio_BaoCaoLoiTram" class="input-group" style="max-width: 100000px; width: 100%;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="row" style="margin-top: 5px;">
+                            <span class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-left: 0px; padding-right: 5px; text-align: right;" NGÀY:</span>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                <input id="cbbNgay_BaoCaoLoiTram" class="input-group" style="max-width: 100000px; width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;">
+                            <span class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-left: 0px; padding-right: 5px; text-align: right;">BIỂN SỐ XE:</span>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                <input id="cbbBSXe_BaoCaoLoiTram" class="input-group" style="max-width: 100000px; width: 100%;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="row" style="margin-top: 5px;">
+                            <span class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-left: 0px; padding-right: 5px; text-align: right;">LỖI:</span>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                <input id="cbbLoi_BaoCaoLoiTram" class="input-group" style="max-width: 100000px; width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;">
+                            <span class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-left: 0px; padding-right: 5px; text-align: right;">CHUẨN ĐOÁN:</span>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                <input id="IPSec_chuandoan" placeholder="CHỌN CHUẨN ĐOÁN.." style="max-width: 100000px; width: 100%;">
+                                <input id="hf_IPSec_chuandoan" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3">
+                        <button id="btnXemBaoCaoTheoTuyen" class="btn btn-primary btn-block">XEM</button>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9">
+                        <input type="search" id="txtSearch_BaoCaoLoiTram" class="k-textbox" style="max-width: 100000px; width: 100%;" placeholder="Tìm Kiếm" />
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-bottom: 10px; margin-top: 10px;" />
+            <div class="row" style="padding-bottom: 5px;">
+                <span>MÃ LỖI: </span>
+                <strong> <span id="sp_MaLoi_Search"></span> </strong>
+                <span>| GIỜ: </span>
+                <strong> <span id="sp_Gio_Search"></span> </strong>
+                <span>| NGÀY: </span>
+                <strong> <span id="sp_Ngay_Search"></span> </strong>
+                <span>| BIỂN SỐ XE: </span>
+                <strong> <span id="sp_BenDen_Search"></span> </strong>
+            </div>
+            <div class="row" style="padding-bottom: 5px;">
+                <span>LỖI: </span>
+                <strong> <span id="sp_Loi_Search"></span> </strong>
+            </div>
+            <div class="row" style="padding-bottom: 5px;">
+                <span>ĐÃ CHỌN : </span>
+                <span id="spanIPSec_chuandoan" style="font-weight:bold;">0</span><span> ĐƠN VỊ</span><span id="chitietchon" style="font-weight:bold;"></span>
+            </div>
+        </div>
+    </div>
+    <div id="grid_BaoCaoLoiTram"></div>
+</div>
+<h2>ok</h2>
+
